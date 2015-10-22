@@ -1,16 +1,18 @@
-var getMenu = function () {
-    this.menu = useGetAjax(configObject.getmenu);
+var getMenu = function (dataObject) {
+    this.menu = useGetAjax(configObject.getmenu,dataObject);
 };
 
 getMenu.prototype = {
     menu: '',
     MenuContent: function () {
+        console.log(this.menu);
         $("#menus").html(this.menu);
-        return this.menu;
+        //return this.menu;
     }
 };
 $(function(){
-  var menus = new getMenu();
+  var positionObject = {position:"3502"};
+  var menus = new getMenu(positionObject);
   menus.MenuContent();
 });
 
@@ -23,7 +25,7 @@ function useGetAjax(url, data){
     }
     $.ajax({
        url: url,
-       type: "GET",
+       type: "POST",
        data: data,
        async: false,
        dataType: "JSON",
@@ -32,9 +34,12 @@ function useGetAjax(url, data){
            if(rs.status){
                result = rs.menu;
            }else{
-               console.log('get menu error');
+               console.log(rs.msg);
            }
        }
     });
     return result;
 }
+
+
+

@@ -24,7 +24,7 @@
             
             if($BtnContent){
                 $btnStr = str_replace( "@@class@@", $BtnStyleClass, $BtnContent);
-                $btnStr = str_replace( "@@onclick@@", "sysFrameInsertBtn('".$listID."', '".$actionUrl."', '".$processFunction."');", $btnStr);
+                $btnStr = str_replace( "@@onclick@@", "sysFrameInsertBtn('".$listID."', '".$actionUrl."', ".$processFunction.");", $btnStr);
             }else{
                 $btnStr = 'Btn Not Setting';
             }
@@ -39,7 +39,7 @@
             if($BtnContent && !empty($DataArray[$ActionID])){
                 $btnStr = str_replace( "@@class@@", $BtnStyleClass, $BtnContent);
                 $btnStr = str_replace("@@actionID@@", $DataArray[$ActionID], $btnStr);
-                $btnStr = str_replace( "@@onclick@@", "sysFrameModifyBtn($(this), '".$actionUrl."', '".$inputClass."', '".$contentClass."', '".$processFunction."');", $btnStr);
+                $btnStr = str_replace( "@@onclick@@", "sysFrameModifyBtn($(this), '".$actionUrl."', '".$inputClass."', '".$contentClass."', ".$processFunction.");", $btnStr);
             }else{
                 $btnStr = 'Btn Not Setting';
             }
@@ -54,7 +54,7 @@
             if($BtnContent && !empty($DataArray[$ActionID])){
                 $btnStr = str_replace( "@@class@@", $BtnStyleClass, $BtnContent);
                 $btnStr = str_replace("@@actionID@@", $DataArray[$ActionID], $btnStr);
-                $btnStr = str_replace( "@@onclick@@", "sysFrameDeleteBtn($(this), '".$rowID."', '".$actionUrl."', '".$processFunction."');", $btnStr);
+                $btnStr = str_replace( "@@onclick@@", "sysFrameDeleteBtn($(this), '".$rowID."', '".$actionUrl."', ".$processFunction.");", $btnStr);
             }else{
                 $btnStr = 'Btn Not Setting';
             }
@@ -69,7 +69,7 @@
             if($BtnContent && !empty($DataArray[$ActionID])){
                 $btnStr = str_replace( "@@class@@", $BtnStyleClass, $BtnContent);
                 $btnStr = str_replace("@@actionID@@", $DataArray[$ActionID], $btnStr);
-                $btnStr = str_replace( "@@onclick@@", "sysFrameDeleteBtn($(this), '".$inputClass."', '".$contentClass."', '".$actionUrl."', '".$processFunction."');", $btnStr);
+                $btnStr = str_replace( "@@onclick@@", "sysFrameDeleteBtn($(this), '".$inputClass."', '".$contentClass."', '".$actionUrl."', ".$processFunction.");", $btnStr);
             }else{
                 $btnStr = 'Btn Not Setting';
             }

@@ -21,7 +21,7 @@ sysFrameItem.prototype = {
            ItemData.i = v;
         });
         return ItemData;
-    }
+    },
     getItemIDAction: function(){
         if(actionType){
             $("."+aClass).prop("id").replace(actionType+'Act');
@@ -60,11 +60,7 @@ function sysFrameModifyBtn(actionObject, actionUrl, inputClass, contentClass, pr
     sfiInput.showAction();
     
     if(processFunction){
-        try{
-            $.fn[processFunction]();
-        }catch(e){
-            console.log(processFunction + "Function Error"+e);
-        }
+        callMethod(processFunction);
     }
     optionAction(actionUrl, '', {}, false);
 }
@@ -75,11 +71,7 @@ function sysFrameDeleteBtn(actionObject, rowID, actionUrl, processFunction){
     var dataObject = {itemID:itemID}
     
     if(processFunction){
-        try{
-            $.fn[processFunction]();
-        }catch(e){
-            console.log(processFunction + "Function Error"+e);
-        }
+        callMethod(processFunction);
     }
     optionAction(actionUrl, '', dataObject, false);
 }
@@ -97,11 +89,7 @@ function sysFrameDeleteBtn(actionObject, inputClass, contentClass, actionUrl, pr
     dataObject.itemID = itemID;
     
     if(processFunction){
-        try{
-            $.fn[processFunction]();
-        }catch(e){
-            console.log(processFunction + "Function Error"+e);
-        }
+        callMethod(processFunction);
     }
     
     optionAction(actionUrl, '', dataObject, false);
@@ -132,3 +120,11 @@ function optionAction(actionUrl, listID, dataObject, appendAction){
     }
 }
 
+function callMethod(method)
+{
+    try{
+        method();
+    }catch(e){
+        console.log(processFunction + "Function Error"+e);
+    }
+}

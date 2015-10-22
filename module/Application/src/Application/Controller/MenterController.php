@@ -23,9 +23,19 @@ class MenterController extends AbstractActionController
         $pArr["status"] = false;
         if(!empty($_POST)){
             if($_POST["status"]){
+                $strSQL = "select * from acl_account_position_list where uuid = '".$_POST["uuid"]."'";
+                $data = $VTs->QueryData($strSQL);
+                $position = '';
+                if(!empty($data)){
+                    foreach($data as $content){
+                        $position .= $content["position_uid"].',';
+                    }
+                    $position = substr($position,0,strlen($position)-1);
+                }
                 $_SESSION["uuid"] = $_POST["uuid"];
                 $_SESSION["userName"] = $_POST["name"];
                 $_SESSION["ac"] = $_POST["userAc"];
+                $_SESSION["position"] = $position;
                 $pArr["status"] = true;
             }else{
                 $pArr["msg"] = 'This Login is False';
